@@ -22,7 +22,7 @@ const ExportButton = ({ newColors, oldColors }) => {
   };
 
   return (
-    <div>
+    <div className='exportContainer'>
       <Button onClick={handleClick}>
         <p>Export to JSON</p>
       </Button>

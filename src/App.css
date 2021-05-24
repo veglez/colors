@@ -11,6 +11,10 @@
   gap: 20px;
 }
 
-.container button {
+.container > input {
+  grid-column: span 2;
+}
+
+.container .exportContainer {
   grid-column: span 2;
 }
