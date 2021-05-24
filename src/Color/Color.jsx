@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { ColorDiv, Container } from './styles';
-import { v4 } from 'uuid';
 
 const Color = ({ readOnly, color, newColors, id }) => {
   const [colorName, setColorName] = useState(color);

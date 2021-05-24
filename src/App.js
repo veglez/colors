@@ -6,7 +6,7 @@ import ExportButton from './ExportButton/ExportButton';
 function App() {
   const [colors, setColors] = useState([]);
   const [newColors, setNewColors] = useState({});
-  const ammount = 10;
+  const ammount = 20;
   useEffect(() => {
     fetch(`https://www.colr.org/json/colors/random/${ammount}`)
       .then((res) => res.json())
