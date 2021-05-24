@@ -1,12 +1,32 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const ExportButton = ({ colors }) => {
-  const fetchedColors = colors;
+const Button = styled.button`
+  padding: 10px;
+`;
+
+const ExportButton = ({ newColors, oldColors }) => {
+  const newSet = newColors;
+
+  let relation = {};
+
+  const handleClick = () => {
+    oldColors.forEach((color, i) => {
+      relation[i] = {
+        old: `#${color.hex}`,
+        new: newSet[i],
+      };
+    });
+    console.log(relation);
+    console.log(JSON.stringify(relation));
+  };
 
   return (
-    <button>
-      <p>Export to JSON</p>
-    </button>
+    <div>
+      <Button onClick={handleClick}>
+        <p>Export to JSON</p>
+      </Button>
+    </div>
   );
 };
 

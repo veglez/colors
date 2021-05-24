@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Color from './Color/Color';
 import './App.css';
+import ExportButton from './ExportButton/ExportButton';
 
 function App() {
   const [colors, setColors] = useState([]);
+  const [newColors, setNewColors] = useState({});
   const ammount = 10;
   useEffect(() => {
     fetch(`https://www.colr.org/json/colors/random/${ammount}`)
@@ -13,22 +15,36 @@ function App() {
 
   if (colors.length === 0) return <h2>Loading....</h2>;
 
+  console.log(newColors);
   return (
     <div className='container'>
       <div className='fromJSON'>
         <h2>Originales</h2>
-        {colors.map((c, i) => {
-          console.log(c.hex);
-          return <Color key={c.id} color={`#${c.hex}`} readOnly={true} />;
+        {colors.map((c) => {
+          return (
+            <Color
+              key={c.id}
+              id={c.id}
+              newColors={setNewColors}
+              color={`#${c.hex}`}
+              readOnly={true}
+            />
+          );
         })}
       </div>
       <div className='newSet'>
         <h2>Nuevos</h2>
-        {colors.map((x) => (
-          <Color key={x.name} color={'#000'} readOnly={false} />
+        {colors.map((x, i) => (
+          <Color
+            key={x.name}
+            id={i}
+            newColors={setNewColors}
+            color={'#000'}
+            readOnly={false}
+          />
         ))}
       </div>
-      <button>Export to JSON</button>
+      <ExportButton oldColors={colors} newColors={newColors} />
     </div>
   );
 }
